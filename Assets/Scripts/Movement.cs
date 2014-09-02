@@ -7,11 +7,14 @@ public class Movement : MonoBehaviour {
 	public float torqueCoeff;
 	public float jumpMargin;	// how far can the ball be from the ground for it to jump
 
+	private Vector3 jumpDetectionOffset;
 	private Transform cameraTransform;
+	private bool jumpPressed = false;
 
 	// Use this for initialization
 	void Start () {
 		cameraTransform = gameObject.GetComponent <CameraMovement>().cameraTransform;
+		jumpDetectionOffset = new Vector3 (0, -jumpMargin, 0);
 	}
 
 	void FixedUpdate(){
@@ -26,10 +29,12 @@ public class Movement : MonoBehaviour {
 		Vector3 tTorque = (fTorque + hTorque).normalized * torqueCoeff;
 
 		// jumping
-		if ((Input.GetKeyDown (KeyCode.Mouse0) || Input.GetKeyDown (KeyCode.Space)) && (Physics.Raycast (transform.position, Vector3.down, GetComponent<SphereCollider>().radius + jumpMargin)))
+		if (jumpPressed && Physics.CheckSphere (transform.position + jumpDetectionOffset, GetComponent<SphereCollider>().radius, LayerMask.GetMask("MapGeometry")))
 		{
 			rigidbody.AddForce (Physics.gravity.normalized * -jumpCoeff, ForceMode.Impulse);
+			Debug.Log ("jumped");
 		}
+		jumpPressed = false;
 
 		// force/torque application
 		rigidbody.AddForce (tForce, ForceMode.Force);
@@ -38,6 +43,6 @@ public class Movement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+		jumpPressed = ((Input.GetKeyDown (KeyCode.Mouse0) || Input.GetKeyDown (KeyCode.Space)) || jumpPressed);
 	}
 }
