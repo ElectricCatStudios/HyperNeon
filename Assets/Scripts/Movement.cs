@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class force : MonoBehaviour {
+public class Movement : MonoBehaviour {
 	public float forceCoeff;
 	public float jumpCoeff;
 	public float torqueCoeff;
+	public float jumpMargin;	// how far can the ball be from the ground for it to jump
 
 	private Transform cameraTransform;
 
@@ -25,7 +26,7 @@ public class force : MonoBehaviour {
 		Vector3 tTorque = (fTorque + hTorque).normalized * torqueCoeff;
 
 		// jumping
-		if (Input.GetKeyDown (KeyCode.Mouse0) || Input.GetKeyDown (KeyCode.Space))
+		if ((Input.GetKeyDown (KeyCode.Mouse0) || Input.GetKeyDown (KeyCode.Space)) && (Physics.Raycast (transform.position, Vector3.down, GetComponent<SphereCollider>().radius + jumpMargin)))
 		{
 			rigidbody.AddForce (Physics.gravity.normalized * -jumpCoeff, ForceMode.Impulse);
 		}
