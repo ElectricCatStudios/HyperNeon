@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour {
 	public float jumpCoeff;
 	public float torqueCoeff;
 	public float jumpMargin;	// how far can the ball be from the ground for it to jump
+	public float jumpDetRad;	// the ratio of the jump detection sphere and  sphere collider radii
 
 	private Vector3 jumpDetectionOffset;
 	private Transform cameraTransform;
@@ -29,7 +30,7 @@ public class Movement : MonoBehaviour {
 		Vector3 tTorque = (fTorque + hTorque).normalized * torqueCoeff;
 
 		// jumping
-		if (jumpPressed && Physics.CheckSphere (transform.position + jumpDetectionOffset, GetComponent<SphereCollider>().radius, LayerMask.GetMask("MapGeometry")))
+		if (jumpPressed && Physics.CheckSphere (transform.position + jumpDetectionOffset, GetComponent<SphereCollider>().radius * jumpDetRad, LayerMask.GetMask("MapGeometry")))
 		{
 			rigidbody.AddForce (Physics.gravity.normalized * -jumpCoeff, ForceMode.Impulse);
 			Debug.Log ("jumped");
