@@ -5,6 +5,8 @@ Project("{8F09BADF-5AC7-C5E9-35D9-264215A04DFD}") = "HyperNeon", "Assembly-CShar
 EndProject
 Project("{8F09BADF-5AC7-C5E9-35D9-264215A04DFD}") = "HyperNeon", "Assembly-CSharp.csproj", "{5688E544-AA4F-2C1E-989F-2794C77EF6A5}"
 EndProject
+Project("{8F09BADF-5AC7-C5E9-35D9-264215A04DFD}") = "HyperNeon", "Assembly-CSharp-Editor.csproj", "{EEB15299-E3F3-1E7A-20DE-02D15FE72784}"
+EndProject
 Project("{8F09BADF-5AC7-C5E9-35D9-264215A04DFD}") = "HyperNeon", "Assembly-UnityScript-firstpass.unityproj", "{EF63E88D-3BB4-31F1-1C58-8BB922E7B736}"
 EndProject
 Project("{8F09BADF-5AC7-C5E9-35D9-264215A04DFD}") = "HyperNeon", "Assembly-UnityScript-Editor.unityproj", "{9989C5FE-5EC0-3F68-920B-78B79305BF85}"
@@ -23,6 +25,10 @@ Global
 		{5688E544-AA4F-2C1E-989F-2794C77EF6A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5688E544-AA4F-2C1E-989F-2794C77EF6A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5688E544-AA4F-2C1E-989F-2794C77EF6A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEB15299-E3F3-1E7A-20DE-02D15FE72784}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEB15299-E3F3-1E7A-20DE-02D15FE72784}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEB15299-E3F3-1E7A-20DE-02D15FE72784}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEB15299-E3F3-1E7A-20DE-02D15FE72784}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EF63E88D-3BB4-31F1-1C58-8BB922E7B736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EF63E88D-3BB4-31F1-1C58-8BB922E7B736}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF63E88D-3BB4-31F1-1C58-8BB922E7B736}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,7 +41,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-						GlobalSection(MonoDevelopProperties) = preSolution
+									GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

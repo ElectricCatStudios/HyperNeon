@@ -8,6 +8,7 @@ public class CameraMovement : MonoBehaviour {
 	public float ySensitivity;
 	public bool lockCursor;
 
+
 	// Use this for initialization
 	void Start () {
 		Screen.lockCursor = lockCursor;
