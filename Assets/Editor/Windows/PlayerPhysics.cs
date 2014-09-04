@@ -15,6 +15,11 @@ public class PlayerPhysics : EditorWindow
 	{
 		EditorWindow.GetWindow (typeof(PlayerPhysics));
 	}
+
+	void Update()
+	{
+		Repaint ();
+	}
 	
 	void OnGUI()
 	{

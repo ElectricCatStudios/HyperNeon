@@ -1857,7 +1857,7 @@ Rigidbody:
   m_AngularDrag: .200000003
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &1162103838
@@ -1876,6 +1876,10 @@ MonoBehaviour:
   torqueCoeff: 2
   jumpMargin: .0500000007
   jumpDetRad: .899999976
+  maxAngularVel: 20
+  useConeFriction: 0
+  interpolation: 1
+  iterationCount: 6
 --- !u!23 &1162103839
 Renderer:
   m_ObjectHideFlags: 0
