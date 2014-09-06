@@ -41,7 +41,6 @@ public class Movement : MonoBehaviour {
 		if (jumpPressed && Physics.CheckSphere (transform.position + jumpDetectionOffset, GetComponent<SphereCollider>().radius * jumpDetRad, LayerMask.GetMask("MapGeometry")))
 		{
 			rigidbody.AddForce (Physics.gravity.normalized * -jumpCoeff, ForceMode.Impulse);
-			Debug.Log ("jumped");
 		}
 		jumpPressed = false;
 
