@@ -12765,7 +12765,7 @@ Rigidbody:
   m_AngularDrag: .200000003
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &1162103838
@@ -12786,7 +12786,7 @@ MonoBehaviour:
   jumpDetRad: .899999976
   maxAngularVel: 20
   useConeFriction: 0
-  interpolation: 1
+  interpolation: 0
   iterationCount: 6
 --- !u!23 &1162103839
 Renderer:
@@ -12823,7 +12823,7 @@ SphereCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1162103835}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 1725018509}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -19057,6 +19057,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 690946514}
   m_GameObject: {fileID: 1724824455}
   m_Mesh: {fileID: 4300002, guid: f721dbd997c4e9c4ba8090ebcb3a5c7d, type: 3}
+--- !u!134 &1725018509
+PhysicMaterial:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Default (Instance) (Instance) (Instance)
+  dynamicFriction: .400000006
+  staticFriction: .400000006
+  bounciness: 0
+  frictionCombine: 0
+  bounceCombine: 0
+  frictionDirection2: {x: 0, y: 0, z: 0}
+  dynamicFriction2: 0
+  staticFriction2: 0
 --- !u!1 &1731404084
 GameObject:
   m_ObjectHideFlags: 0

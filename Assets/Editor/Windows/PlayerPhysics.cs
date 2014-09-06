@@ -26,6 +26,7 @@ public class PlayerPhysics : EditorWindow
 		// get player Rigidbody and Movement script
 		Rigidbody playerRigidbody = GameObject.FindWithTag ("Player").GetComponent<Rigidbody> ();
 		Movement playerMovement = GameObject.FindWithTag ("Player").GetComponent<Movement> ();
+		PhysicMaterial playerPMat = GameObject.FindWithTag ("Player").GetComponent<SphereCollider> ().material;
 
 		// MOVEMENT SETTINGS
 		GUILayout.Label ("Movement Settings", EditorStyles.boldLabel);
@@ -52,6 +53,14 @@ public class PlayerPhysics : EditorWindow
 		// max angular velocity
 		playerMovement.maxAngularVel = EditorGUILayout.FloatField("Max Angular Velocity", playerMovement.maxAngularVel);
 		playerRigidbody.maxAngularVelocity = playerMovement.maxAngularVel;
+
+		// PHYSICS MATERIAL SETTINGS
+		GUILayout.Label ("Physics Material Settings", EditorStyles.boldLabel);
+		// friction
+		playerPMat.dynamicFriction = EditorGUILayout.FloatField ("Dynamic Friction", playerPMat.dynamicFriction);
+		playerPMat.staticFriction = EditorGUILayout.FloatField ("Static Friction", playerPMat.staticFriction);
+		// bounciness
+		playerPMat.bounciness = EditorGUILayout.FloatField ("Bounciness", playerPMat.bounciness);
 
 		// ADVANCED SETTINGS
 		showAdvanced = EditorGUILayout.Foldout (showAdvanced, "Advanced Settings");
