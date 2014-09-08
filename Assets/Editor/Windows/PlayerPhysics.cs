@@ -4,30 +4,36 @@ using UnityEditor;
 
 public class PlayerPhysics : EditorWindow
 {	
-	string[] interpolateOptions = new string[3] {"None", "Interpolate", "Extrapolate"};
-	int interpolateIndex;
-	bool showAdvanced;
-
-
-	// add menu item to the window menu called Player Physics
+	private string[] interpolateOptions = new string[3] {"None", "Interpolate", "Extrapolate"};
+	private int interpolateIndex;
+	private bool showAdvanced;
+	private Rigidbody playerRigidbody;
+	private Movement playerMovement;
+	private PhysicMaterial playerPMat;
+		
+		
+		// add menu item to the window menu called Player Physics
 	[MenuItem("Window/Player Physics")]
 	public static void ShowWindow()
 	{
 		EditorWindow.GetWindow (typeof(PlayerPhysics));
 	}
 
-	void Update()
+	void OnEnable()
+	{
+		// get relevant components
+		playerRigidbody = GameObject.FindWithTag ("Player").GetComponent<Rigidbody> ();
+		playerMovement = GameObject.FindWithTag ("Player").GetComponent<Movement> ();
+		playerPMat = (PhysicMaterial) Resources.Load ("PhysicMaterials/Ball");
+	}
+
+	void OnInspectorUpdate()
 	{
 		Repaint ();
 	}
 	
 	void OnGUI()
 	{
-		// get player Rigidbody and Movement script
-		Rigidbody playerRigidbody = GameObject.FindWithTag ("Player").GetComponent<Rigidbody> ();
-		Movement playerMovement = GameObject.FindWithTag ("Player").GetComponent<Movement> ();
-		PhysicMaterial playerPMat = GameObject.FindWithTag ("Player").GetComponent<SphereCollider> ().material;
-
 		// MOVEMENT SETTINGS
 		GUILayout.Label ("Movement Settings", EditorStyles.boldLabel);
 		// force
