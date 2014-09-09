@@ -41,7 +41,7 @@ public class CameraMovement : MonoBehaviour {
 			
 			RaycastHit hit;
 			if (Physics.Linecast (target.position, transform.position, out hit)) {
-				distance -=  hit.distance;
+
 			}
 			Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
 			Vector3 position = rotation * negDistance + target.position;
