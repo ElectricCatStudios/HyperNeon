@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		cameraTransform = gameObject.GetComponent <CameraMovement>().cameraTransform;
+		cameraTransform = Camera.main.transform;
 		jumpDetectionOffset = new Vector3 (0, -jumpMargin, 0);
 		rigidbody.maxAngularVelocity = maxAngularVel;
 		rigidbody.useConeFriction = useConeFriction;
