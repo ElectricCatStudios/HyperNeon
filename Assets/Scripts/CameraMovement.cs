@@ -48,6 +48,7 @@ public class CameraMovement : MonoBehaviour {
 			transform.rotation = rotation;
 			transform.position = position;
 
+			// to do: add more raycasts
 			while (Physics.Raycast (transform.position + -transform.forward*0.2f, transform.forward,(target.position - transform.position).magnitude, 1 << 8))
 			{
 				distance -= 0.01f;
