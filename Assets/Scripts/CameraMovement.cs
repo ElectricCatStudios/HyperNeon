@@ -29,6 +29,9 @@ public class CameraMovement : MonoBehaviour {
 	}
 	
 	void LateUpdate () {
+
+		Debug.DrawRay (transform.position+ -transform.forward*0.2f, transform.forward*((target.position - transform.position).magnitude));
+
 		if (target) {
 			x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
 			y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
@@ -38,17 +41,22 @@ public class CameraMovement : MonoBehaviour {
 			Quaternion rotation = Quaternion.Euler(y, x, 0);
 			
 			distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel")*5, distanceMin, distanceMax);
-			
-			RaycastHit hit;
-			if (Physics.Linecast (target.position, transform.position, out hit)) {
 
-			}
 			Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
 			Vector3 position = rotation * negDistance + target.position;
 			
 			transform.rotation = rotation;
 			transform.position = position;
-			
+
+			while (Physics.Raycast (transform.position + -transform.forward*0.2f, transform.forward,(target.position - transform.position).magnitude, 1 << 8))
+			{
+				distance -= 0.01f;
+				negDistance = new Vector3(0.0f, 0.0f, -distance);
+				position = rotation * negDistance + target.position;
+				
+				transform.rotation = rotation;
+				transform.position = position;
+			}
 		}
 		
 	}
