@@ -17377,6 +17377,8 @@ MonoBehaviour:
   distanceMax: 15
   scrollSpeed: 5
   cameraMargin: .200000003
+  minAlpha: .100000001
+  alphaBeginThreshold: 1
 --- !u!1 &1614494799
 GameObject:
   m_ObjectHideFlags: 0
