@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraMovement : MonoBehaviour {
 	
 	public Transform target;
-	public float distance = 5.0f;
+	public float targetDistance = 5.0f;
 	public float xSpeed = 120.0f;
 	public float ySpeed = 120.0f;
 	
@@ -13,6 +13,10 @@ public class CameraMovement : MonoBehaviour {
 	
 	public float distanceMin = .5f;
 	public float distanceMax = 15f;
+
+	public float scrollSpeed = 5f;
+
+	public float cameraMargin = 0.2f;
 	
 	float x = 0.0f;
 	float y = 0.0f;
@@ -29,7 +33,7 @@ public class CameraMovement : MonoBehaviour {
 	}
 	
 	void LateUpdate () {
-
+		float distance = targetDistance;
 		Debug.DrawRay (transform.position+ -transform.forward*0.2f, transform.forward*((target.position - transform.position).magnitude));
 
 		if (target) {
@@ -40,7 +44,7 @@ public class CameraMovement : MonoBehaviour {
 			
 			Quaternion rotation = Quaternion.Euler(y, x, 0);
 			
-			distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel")*5, distanceMin, distanceMax);
+			targetDistance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel")*scrollSpeed, distanceMin, distanceMax);
 
 			Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
 			Vector3 position = rotation * negDistance + target.position;
@@ -49,7 +53,7 @@ public class CameraMovement : MonoBehaviour {
 			transform.position = position;
 
 			// to do: add more raycasts
-			while (Physics.Raycast (transform.position + -transform.forward*0.2f, transform.forward,(target.position - transform.position).magnitude, 1 << 8))
+			while (Physics.Raycast (target.position, -transform.forward,(target.position - transform.position).magnitude + cameraMargin, 1 << 8))
 			{
 				distance -= 0.01f;
 				negDistance = new Vector3(0.0f, 0.0f, -distance);

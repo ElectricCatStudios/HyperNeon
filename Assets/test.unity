@@ -17368,13 +17368,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1162103836}
-  distance: 5
+  targetDistance: 5
   xSpeed: 60
   ySpeed: 60
   yMinLimit: -20
   yMaxLimit: 80
   distanceMin: 0
   distanceMax: 15
+  scrollSpeed: 5
+  cameraMargin: .200000003
 --- !u!1 &1614494799
 GameObject:
   m_ObjectHideFlags: 0
