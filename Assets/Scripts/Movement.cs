@@ -7,6 +7,10 @@ public class Movement : MonoBehaviour {
 	public float torqueCoeff;
 	public float jumpMargin;	// how far can the ball be from the ground for it to jump
 	public float jumpDetRad;	// the ratio of the jump detection sphere and  sphere collider radii
+	public float maxAngularVel;
+	public bool useConeFriction;
+	public RigidbodyInterpolation interpolation;
+	public int iterationCount;
 
 	private Vector3 jumpDetectionOffset;
 	private Transform cameraTransform;
@@ -14,8 +18,12 @@ public class Movement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		cameraTransform = gameObject.GetComponent <CameraMovement>().cameraTransform;
+		cameraTransform = Camera.main.transform;
 		jumpDetectionOffset = new Vector3 (0, -jumpMargin, 0);
+		rigidbody.maxAngularVelocity = maxAngularVel;
+		rigidbody.useConeFriction = useConeFriction;
+		rigidbody.interpolation = interpolation;
+		rigidbody.solverIterationCount = iterationCount;
 	}
 
 	void FixedUpdate(){
@@ -33,7 +41,6 @@ public class Movement : MonoBehaviour {
 		if (jumpPressed && Physics.CheckSphere (transform.position + jumpDetectionOffset, GetComponent<SphereCollider>().radius * jumpDetRad, LayerMask.GetMask("MapGeometry")))
 		{
 			rigidbody.AddForce (Physics.gravity.normalized * -jumpCoeff, ForceMode.Impulse);
-			Debug.Log ("jumped");
 		}
 		jumpPressed = false;
 
