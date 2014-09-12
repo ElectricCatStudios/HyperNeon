@@ -44,9 +44,11 @@ public class CameraMovement : MonoBehaviour {
 		targetPos = target.transform.position;
 
 		if (target) {
-			x += Input.GetAxis ("Mouse X") * xSpeed * distance * 0.02f;
-			y -= Input.GetAxis ("Mouse Y") * ySpeed * 0.02f;
-			
+			if (!LevelController.menuOpen){
+				x += Input.GetAxis ("Mouse X") * xSpeed * distance * 0.02f;
+				y -= Input.GetAxis ("Mouse Y") * ySpeed * 0.02f;
+			}
+
 			y = ClampAngle (y, yMinLimit, yMaxLimit);
 			
 			Quaternion rotation = Quaternion.Euler (y, x, 0);

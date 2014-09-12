@@ -51,6 +51,6 @@ public class Movement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		jumpPressed = ((Input.GetKeyDown (KeyCode.Mouse0) || Input.GetKeyDown (KeyCode.Space)) || jumpPressed);
+		jumpPressed = (((Input.GetKeyDown (KeyCode.Mouse0) && !LevelController.menuOpen) || Input.GetKeyDown (KeyCode.Space)) || jumpPressed);
 	}
 }
