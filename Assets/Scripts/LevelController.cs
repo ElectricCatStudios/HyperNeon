@@ -3,6 +3,8 @@ using System.Collections;
 
 public class LevelController : MonoBehaviour {
 	public static bool menuOpen = false;
+	public static Vector3 respawnPosition;
+	public static GameObject player;
 
 	public int buttonWidth = 96;
 	public int buttonHeight = 64;
@@ -27,6 +29,9 @@ public class LevelController : MonoBehaviour {
 			Screen.height / 2 - buttonHeight / 2 + buttonHeight + 32,
 			buttonWidth,
 			buttonHeight);
+
+		player = GameObject.FindWithTag ("Player");
+		respawnPosition = player.transform.position;
 	}
 
 	void OnGUI(){
@@ -48,7 +53,7 @@ public class LevelController : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown (KeyCode.R)) {
-			Application.LoadLevel(Application.loadedLevel);
+			Respawn();
 		}
 
 		if (Input.GetKeyDown (KeyCode.Minus)){
@@ -80,5 +85,13 @@ public class LevelController : MonoBehaviour {
 		} else {
 			OpenMenu ();
 		}
+	}
+
+	public static void Respawn()
+	{
+		player.transform.position = respawnPosition;
+		player.rigidbody.velocity = Vector3.zero;
+		player.rigidbody.angularVelocity = Vector3.zero;
+		player.transform.rotation = Quaternion.Euler (new Vector3(270,90,0));
 	}
 }
