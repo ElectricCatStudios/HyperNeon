@@ -32169,6 +32169,7 @@ MonoBehaviour:
   jumpMargin: .0500000007
   jumpDetRad: .689999998
   maxAngularVel: 20
+  jumpDelay: 0
   useConeFriction: 0
   interpolation: 0
   iterationCount: 6
