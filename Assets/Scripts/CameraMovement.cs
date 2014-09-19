@@ -35,6 +35,7 @@ public class CameraMovement : MonoBehaviour {
 			rigidbody.freezeRotation = true;
 
 		targetPos = target.transform.position;
+		Screen.lockCursor = true;
 	}
 	
 	void LateUpdate () {
