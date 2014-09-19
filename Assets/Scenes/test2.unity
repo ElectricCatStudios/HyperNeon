@@ -25933,13 +25933,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 2041007930}
   targetDistance: 5
-  xSpeed: 30
-  ySpeed: 30
   yMinLimit: -20
   yMaxLimit: 80
   distanceMin: 0
   distanceMax: 15
-  scrollSpeed: 5
   cameraMargin: .200000003
   minAlpha: .100000001
   alphaBeginThreshold: 3

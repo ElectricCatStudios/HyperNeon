@@ -5,8 +5,6 @@ public class CameraMovement : MonoBehaviour {
 	
 	public Transform target;
 	public float targetDistance = 5.0f;
-	public float xSpeed = 120.0f;
-	public float ySpeed = 120.0f;
 	
 	public float yMinLimit = -20f;
 	public float yMaxLimit = 80f;
@@ -14,7 +12,6 @@ public class CameraMovement : MonoBehaviour {
 	public float distanceMin = .5f;
 	public float distanceMax = 15f;
 
-	public float scrollSpeed = 5f;
 	public float cameraMargin = 0.2f;
 	public float minAlpha = 0.1f;
 	public float alphaBeginThreshold = 1f;
@@ -46,15 +43,15 @@ public class CameraMovement : MonoBehaviour {
 
 		if (target) {
 			if (!LevelController.menuOpen){
-				x += Input.GetAxis ("Mouse X") * xSpeed * distance * 0.02f;
-				y -= Input.GetAxis ("Mouse Y") * ySpeed * 0.02f;
+				x += Input.GetAxis ("Mouse X") * 0.02f;
+				y -= Input.GetAxis ("Mouse Y") * 0.02f;
 			}
 
 			y = ClampAngle (y, yMinLimit, yMaxLimit);
 			
 			Quaternion rotation = Quaternion.Euler (y, x, 0);
 			
-			targetDistance = Mathf.Clamp (distance - Input.GetAxis ("Mouse ScrollWheel") * scrollSpeed, distanceMin, distanceMax);
+			targetDistance = Mathf.Clamp (distance - Input.GetAxis ("Mouse ScrollWheel"), distanceMin, distanceMax);
 
 			Vector3 negDistance = new Vector3 (0.0f, 0.0f, -distance);
 			Vector3 position = rotation * negDistance + targetPos;
