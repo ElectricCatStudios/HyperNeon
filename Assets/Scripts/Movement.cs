@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour {
 	public float jumpMargin;	// how far can the ball be from the ground for it to jump
 	public float jumpDetRad;	// the ratio of the jump detection sphere and  sphere collider radii
 	public float maxAngularVel;
+	public float jumpDelay;
 	public bool useConeFriction;
 	public RigidbodyInterpolation interpolation;
 	public int iterationCount;
@@ -15,6 +16,7 @@ public class Movement : MonoBehaviour {
 	private Vector3 jumpDetectionOffset;
 	private Transform cameraTransform;
 	private bool jumpPressed = false;
+	private float lastJump = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -51,6 +53,9 @@ public class Movement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		jumpPressed = (((Input.GetKeyDown (KeyCode.Mouse0) && !LevelController.menuOpen) || Input.GetKeyDown (KeyCode.Space)) || jumpPressed);
+		//jumpPressed = (((Input.GetKeyDown (KeyCode.Mouse0) && !LevelController.menuOpen) || Input.GetKeyDown (KeyCode.Space)) || jumpPressed);
+		if ((Input.GetKeyDown (KeyCode.Mouse0) && !LevelController.menuOpen) || Input.GetKeyDown (KeyCode.Space)) {
+				jumpPressed = true;
+		}
 	}
 }
