@@ -44,6 +44,7 @@ public class Movement : MonoBehaviour {
 		{
 			rigidbody.AddForce (Physics.gravity.normalized * -jumpCoeff, ForceMode.Impulse);
 		}
+		jumpPressed = false;
 
 		// force/torque application
 		rigidbody.AddForce (tForce, ForceMode.Force);
@@ -54,12 +55,7 @@ public class Movement : MonoBehaviour {
 	void Update () {
 		//jumpPressed = (((Input.GetKeyDown (KeyCode.Mouse0) && !LevelController.menuOpen) || Input.GetKeyDown (KeyCode.Space)) || jumpPressed);
 		if ((Input.GetKeyDown (KeyCode.Mouse0) && !LevelController.menuOpen) || Input.GetKeyDown (KeyCode.Space)) {
-			if (Time.time - lastJump > jumpDelay) {
 				jumpPressed = true;
-				lastJump = Time.time;
-			}
-		} else if ((Input.GetKeyUp (KeyCode.Mouse0) && !LevelController.menuOpen) || Input.GetKeyUp (KeyCode.Space)) {
-			jumpPressed = false;
 		}
 	}
 }
