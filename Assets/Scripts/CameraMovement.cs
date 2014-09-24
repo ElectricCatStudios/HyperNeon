@@ -42,7 +42,7 @@ public class CameraMovement : MonoBehaviour {
 		targetPos = target.transform.position;
 
 		if (target) {
-			if (!LevelController.menuOpen){
+			if (!MenuController.menuOpen){
 				x += Input.GetAxis ("Mouse X") * 0.02f;
 				y -= Input.GetAxis ("Mouse Y") * 0.02f;
 			}
