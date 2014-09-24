@@ -16,7 +16,6 @@ public class Movement : MonoBehaviour {
 	private Vector3 jumpDetectionOffset;
 	private Transform cameraTransform;
 	private bool jumpPressed = false;
-	private float lastJump = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -54,7 +53,7 @@ public class Movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//jumpPressed = (((Input.GetKeyDown (KeyCode.Mouse0) && !LevelController.menuOpen) || Input.GetKeyDown (KeyCode.Space)) || jumpPressed);
-		if ((Input.GetKeyDown (KeyCode.Mouse0) && !LevelController.menuOpen) || Input.GetKeyDown (KeyCode.Space)) {
+		if ((Input.GetKeyDown (KeyCode.Mouse0) && !MenuController.menuOpen) || Input.GetKeyDown (KeyCode.Space)) {
 				jumpPressed = true;
 		}
 	}
