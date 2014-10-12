@@ -89,10 +89,6 @@ public class MenuController : MonoBehaviour {
 		int dHeight = ySpace + height;
 		int dWidth = xSpace + width;
 
-		Debug.Log ("columnLen: " + columnLen);
-		Debug.Log ("columns: " + columns);
-		Debug.Log ("arraylen: " + butNum);
-
 		for (int i = 0; i < columns; i++){
 			for(int j = 0; j < columnLen; j++){
 				if (butNum > i + j*columns){
@@ -101,11 +97,9 @@ public class MenuController : MonoBehaviour {
 						startHeight + dHeight * j,
 						width,
 						height);
-					Debug.Log ("new button" + i + j);
 				}
 			}
 		}
-		Debug.Log ("finished");
 	}
 	
 	private void ToggleMenu(string menu){
