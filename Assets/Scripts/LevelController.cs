@@ -36,5 +36,9 @@ public class LevelController : MonoBehaviour {
 		player.rigidbody.velocity = Vector3.zero;
 		player.rigidbody.angularVelocity = Vector3.zero;
 		player.transform.rotation = Quaternion.Euler (new Vector3(270,90,0));
+
+		foreach (GameObject block in GameObject.FindGameObjectsWithTag ("Falling")){
+			block.GetComponent<FallingBlock>().Reset();
+		}
 	}
 }
