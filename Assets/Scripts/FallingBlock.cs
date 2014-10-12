@@ -30,6 +30,7 @@ public class FallingBlock : MonoBehaviour {
 			Debug.Log ("calling aeouh");
 			gameObject.rigidbody.isKinematic = false;
 			rigidbody.WakeUp();
+			gameObject.collider.enabled = false;
 		}
 	}
 
@@ -39,6 +40,7 @@ public class FallingBlock : MonoBehaviour {
 		rigidbody.isKinematic = true;
 		touched = false;
 		timer = delay;
+		gameObject.collider.enabled = true;
 		Debug.Log ("resetting");
 	}
 }
